@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DatabaseLayer.Models
 {
-    public  class Type
+    public  class Category
     {
-        public int TypeId { get; set; }
+        public int CategoryId { get; set; }
         public string Name { get; set; }
     }
 }
