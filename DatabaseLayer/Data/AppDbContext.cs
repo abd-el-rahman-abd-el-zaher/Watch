@@ -24,6 +24,7 @@ namespace DatabaseLayer.Data
             builder.ApplyConfiguration(new AnimeConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new GenreConfiguration());
+            builder.ApplyConfiguration(new FavoriteConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
             base.OnModelCreating(builder);

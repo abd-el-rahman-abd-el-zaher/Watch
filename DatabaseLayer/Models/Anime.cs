@@ -13,5 +13,18 @@
         public string Image { get; set; }
         public string Banner { get; set; }
         
+        public string UserId { get; set; }
+        public virtual User User { get; set; }
+
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
+
+        public int GenreId { get; set; }
+        public virtual Genre Genre { get; set; }    
+
+        public virtual ICollection<Episode> Episodes { get; set; }
+
+        public virtual ICollection<Favorite> Favorites { get; set; }
+
     }
 }

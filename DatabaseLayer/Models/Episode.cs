@@ -8,5 +8,7 @@ namespace DatabaseLayer.Models
         public int WatchCount { get; set; }
         public Filler Status { get; set; }
         
+        public int AnimeId { get; set; }    
+        public virtual Anime Anime { get; set; }
     }
 }
