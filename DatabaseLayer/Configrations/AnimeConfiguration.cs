@@ -13,7 +13,8 @@ namespace DatabaseLayer.Configrations
     {
         public void Configure(EntityTypeBuilder<Anime> builder)
         {
-            throw new NotImplementedException();
+            builder.HasOne(anime => anime.User).WithMany(user => user.Animes);
+            builder.HasOne(anime => anime.Category).WithMany(category => category.Animes);
         }
     }
 }

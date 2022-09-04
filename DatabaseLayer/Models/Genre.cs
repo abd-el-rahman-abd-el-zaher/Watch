@@ -5,7 +5,7 @@
         public int GenreId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Anime> Animes { get; set; }
+        public virtual ICollection<AnimeGenres> AnimeGenres { get; set; }
 
     }
 }

@@ -8,7 +8,7 @@ namespace DatabaseLayer.Configrations
     {
         public void Configure(EntityTypeBuilder<Genre> builder)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DatabaseLayer.Configrations
     {
         public void Configure(EntityTypeBuilder<Favorite> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(fav => new { fav.UserId, fav.AnimeId });
         }
     }
 }

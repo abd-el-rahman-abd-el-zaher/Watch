@@ -8,7 +8,7 @@ namespace DatabaseLayer.Configrations
     {
         public void Configure(EntityTypeBuilder<Episode> builder)
         {
-            throw new NotImplementedException();
+            builder.HasOne(episode => episode.Anime).WithMany(anime => anime.Episodes);
         }
     }
 }

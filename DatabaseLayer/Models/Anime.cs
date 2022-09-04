@@ -19,8 +19,7 @@
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public int GenreId { get; set; }
-        public virtual Genre Genre { get; set; }    
+        public virtual ICollection<AnimeGenres> AnimeGenres { get; set; }    
 
         public virtual ICollection<Episode> Episodes { get; set; }
 
