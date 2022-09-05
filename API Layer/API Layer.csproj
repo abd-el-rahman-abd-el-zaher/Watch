@@ -12,8 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="wwwroot\Images\Anime\Main\" />
     <Folder Include="wwwroot\Images\Anime\Banner\" />
     <Folder Include="wwwroot\Images\User\" />

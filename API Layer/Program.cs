@@ -1,3 +1,5 @@
+using API_Layer.Repositories;
+using API_Layer.Repositories.Interfaces;
 using DatabaseLayer.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
      options.UseSqlServer(builder.Configuration.GetConnectionString("app-connection"));
 });
+builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
