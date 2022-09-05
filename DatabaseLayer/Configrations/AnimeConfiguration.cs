@@ -15,6 +15,10 @@ namespace DatabaseLayer.Configrations
         {
             builder.HasOne(anime => anime.User).WithMany(user => user.Animes);
             builder.HasOne(anime => anime.Category).WithMany(category => category.Animes);
+            builder.Property(a=>a.OutDay).HasConversion(
+                                         v => v.ToString(),
+                                         v => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), v));
+
         }
     }
 }

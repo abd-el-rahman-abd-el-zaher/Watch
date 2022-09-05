@@ -17,7 +17,7 @@ namespace DatabaseLayer.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=.;database=watch;trusted_connection=true;");
+          //  optionsBuilder.UseSqlServer("server=.;database=watch;trusted_connection=true;");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -27,8 +27,8 @@ namespace DatabaseLayer.Data
             builder.ApplyConfiguration(new AnimeGenresConfiguration());
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new FavoriteConfiguration());
-            builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new EpisodeConfiguration());
             base.OnModelCreating(builder);
         }
         public virtual DbSet<Anime> Animes { get; set; }
