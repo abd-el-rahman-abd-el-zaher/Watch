@@ -32,6 +32,7 @@ namespace DatabaseLayer.Data
             base.OnModelCreating(builder);
         }
         public virtual DbSet<Anime> Animes { get; set; }
+        public virtual DbSet<AnimeGenres> AnimeGenres { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Episode> Episodes { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
