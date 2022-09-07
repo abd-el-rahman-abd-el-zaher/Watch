@@ -3,6 +3,7 @@ using API_Layer.Repositories;
 using API_Layer.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace API_Layer.Controllers
 {
@@ -31,15 +32,23 @@ namespace API_Layer.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] NewAnime newAnime)
         {
-            try
+            if (ModelState.IsValid)
             {
-                await animeRepository.Add(newAnime);
-                return Created("url", newAnime);
+                try
+                {
+                    await animeRepository.Add(newAnime);
+                    return Created("url", newAnime);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ModelState);
             }
+            
         }
     }
 }

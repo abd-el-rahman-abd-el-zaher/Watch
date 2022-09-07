@@ -5,7 +5,7 @@ namespace API_Layer.DataModels
     public class NewAnime
     {
 
-        [Required]
+        [Required(ErrorMessage = "Please Enter The Anime name ok im wating... ")]
         public string Name { get; set; }
         [Required]
         public string Story { get; set; }
