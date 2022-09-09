@@ -22,7 +22,7 @@ namespace API_Layer.DataModels
         [Required]
         [DataType(DataType.Date)]
         public string ReleaseDate { get; set; }
-
+        [Required(ErrorMessage = "Please Enter Episodes Count  ")]
         public int EpisodesNumber { get; set; }
         [Required]
         public string Image { get; set; }
