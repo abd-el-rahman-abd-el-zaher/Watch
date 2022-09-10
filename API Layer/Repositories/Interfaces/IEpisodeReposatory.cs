@@ -3,7 +3,7 @@ using DatabaseLayer.Models;
 
 namespace API_Layer.Repositories.Interfaces
 {
-    public interface IEpisodeInterface
+    public interface IEpisodeReposatory
     {
         Task<List<Episode>> GetAll(int AnimeId);
         Task<Episode> Get(int id);

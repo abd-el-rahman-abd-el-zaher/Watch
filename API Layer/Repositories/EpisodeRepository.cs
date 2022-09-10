@@ -2,10 +2,11 @@
 using API_Layer.Repositories.Interfaces;
 using DatabaseLayer.Data;
 using DatabaseLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_Layer.Repositories
 {
-    public class EpisodeRepository : IEpisodeInterface
+    public class EpisodeRepository : IEpisodeReposatory
     {
         private readonly AppDbContext context;
 
@@ -14,22 +15,31 @@ namespace API_Layer.Repositories
             this.context = context;
         }
 
-        public Task Add(NewEpisode newEpisode)
+        public async Task Add(NewEpisode newEpisode)
         {
-            throw new NotImplementedException();
+            
+
+           Episode episode = new Episode()
+           {
+               AnimeId = newEpisode.AnimeId,
+               Title = newEpisode.Title,
+               Status = newEpisode.Status
+               
+           };
+            context.AddAsync(episode);
+            context.SaveChanges();
         }
 
-        public Task<Episode> Get(int id)
+        public async Task<Episode> Get(int id)
         {
-            throw new NotImplementedException();
+            return await context.Episodes.Where(e => e.EpisodeId == id).SingleOrDefaultAsync();
         }
 
       
 
         public async Task<List<Episode>> GetAll(int AnimeId)
         {
-            //   return context.Episodes.Where(e => e.AnimeId == AnimeId)
-            throw new NotImplementedException();
+            return await context.Episodes.Where(e => e.AnimeId == AnimeId).ToListAsync();
         }
     }
 }

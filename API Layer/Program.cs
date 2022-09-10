@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
      options.UseSqlServer(builder.Configuration.GetConnectionString("app-connection"));
 });
 builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
+builder.Services.AddScoped<IEpisodeReposatory, EpisodeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
