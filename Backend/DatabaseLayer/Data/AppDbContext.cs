@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseLayer.Data
 {
-    public class AppDbContext:IdentityDbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext()
         {
@@ -17,7 +17,7 @@ namespace DatabaseLayer.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-          //  optionsBuilder.UseSqlServer("server=.;database=watch;trusted_connection=true;");
+            optionsBuilder.UseSqlServer("server=.;database=watch;trusted_connection=true;");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -29,12 +29,14 @@ namespace DatabaseLayer.Data
             builder.ApplyConfiguration(new FavoriteConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new EpisodeConfiguration());
+            builder.ApplyConfiguration(new EpisodeurlConfiguration());
             base.OnModelCreating(builder);
         }
         public virtual DbSet<Anime> Animes { get; set; }
         public virtual DbSet<AnimeGenres> AnimeGenres { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Episode> Episodes { get; set; }
+        public virtual DbSet<Episodeurl> Episodeurls { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Favorite> Favorites { get; set; }
     }
