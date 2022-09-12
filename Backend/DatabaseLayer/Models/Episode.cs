@@ -10,5 +10,7 @@ namespace DatabaseLayer.Models
         
         public int AnimeId { get; set; }    
         public virtual Anime Anime { get; set; }
+
+        public ICollection<Episodeurl> Episodeurls { get; set; }
     }
 }
