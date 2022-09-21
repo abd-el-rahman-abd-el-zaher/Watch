@@ -6,11 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API_Layer.Repositories
 {
-    public class AnimeRepository :IAnimeRepository
+    public class AnimeRepository : IAnimeRepository
     {
         private readonly AppDbContext context;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public AnimeRepository(AppDbContext context)
+        public AnimeRepository(AppDbContext context, IWebHostEnvironment hostEnvironment)
         {
             this.context = context;
         }
@@ -25,16 +26,43 @@ namespace API_Layer.Repositories
             return await context.Animes.FindAsync(id);
         }
 
-       public async Task Add(NewAnime newAnime)
+        public async Task Add(NewAnime newAnime)
         {
-            Anime anime = new Anime() { Name=newAnime.Name,Story=newAnime.Story,OutDay=newAnime.OutDay,
-                                        TeaserLink=newAnime.TeaserLink,ReleaseDate=newAnime.ReleaseDate,
-                                        MalPage=newAnime.MalPage,EpisodesNumber=newAnime.EpisodesNumber,
-                                        CategoryId=newAnime.CategoryId,UserId=newAnime.UserId,
-                                        Image=newAnime.Image};
+            if (newAnime.Image.Length>0)
+            {
 
-            await context.AddAsync(anime);
-            await context.SaveChangesAsync();
+
+                Anime anime = new Anime()
+                {
+                    Name = newAnime.Name,
+                    Story = newAnime.Story,
+                    OutDay = newAnime.OutDay,
+                    TeaserLink = newAnime.TeaserLink,
+                    ReleaseDate = newAnime.ReleaseDate,
+                    MalPage = newAnime.MalPage,
+                    EpisodesNumber = newAnime.EpisodesNumber,
+                    CategoryId = newAnime.CategoryId,
+                    UserId = newAnime.UserId
+                };
+                await context.AddAsync(anime);
+                await context.SaveChangesAsync();
+
+                
+                var filePath = Path.Combine(hostEnvironment.WebRootPath, $@"Images\Anime\Main");
+                string fileName = $"{anime.AnimeId}-{anime.Name}";
+                var fullPath = Path.Combine(filePath, fileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await newAnime.Image.CopyToAsync(stream);
+                }
+                anime.Image = fileName;
+                await context.SaveChangesAsync();
+
+            }
+            else
+            {
+                throw new Exception("Image Required");
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace API_Layer.DataModels
         [Required(ErrorMessage = "Please Enter Episodes Count  ")]
         public int EpisodesNumber { get; set; }
         [Required]
-        public string Image { get; set; }
+        public IFormFile Image { get; set; }
         [Required]
         public string UserId { get; set; }
         public int CategoryId { get; set; }
