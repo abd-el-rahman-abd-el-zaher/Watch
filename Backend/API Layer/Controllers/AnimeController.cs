@@ -30,7 +30,7 @@ namespace API_Layer.Controllers
             return Ok(await animeRepository.Get(id));
         }
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] NewAnime newAnime)
+        public async Task<IActionResult> Add([FromForm] NewAnime newAnime)
         {
             if (ModelState.IsValid)
             {
