@@ -14,6 +14,7 @@ namespace API_Layer.Repositories
         public AnimeRepository(AppDbContext context, IWebHostEnvironment hostEnvironment)
         {
             this.context = context;
+            this.hostEnvironment = hostEnvironment; 
         }
 
         public async Task<List<Anime>> GetAll()
@@ -48,14 +49,14 @@ namespace API_Layer.Repositories
                 await context.SaveChangesAsync();
 
                 
-                var filePath = Path.Combine(hostEnvironment.WebRootPath, $@"Images\Anime\Main");
-                string fileName = $"{anime.AnimeId}-{anime.Name}";
+                var filePath = Path.Combine(hostEnvironment.WebRootPath,$@"Images\Anime\Main");
+                string fileName = $"{anime.AnimeId}-{newAnime.Image.FileName}";
                 var fullPath = Path.Combine(filePath, fileName);
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
                     await newAnime.Image.CopyToAsync(stream);
                 }
-                anime.Image = fileName;
+                anime!.Image = fileName;
                 await context.SaveChangesAsync();
 
             }
