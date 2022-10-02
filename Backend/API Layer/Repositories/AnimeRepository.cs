@@ -56,7 +56,7 @@ namespace API_Layer.Repositories
                 {
                     await newAnime.Image.CopyToAsync(stream);
                 }
-                anime!.Image = fileName;
+                anime.Image = fileName;
                 await context.SaveChangesAsync();
 
             }

@@ -17,7 +17,7 @@ namespace DatabaseLayer.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-          //  optionsBuilder.UseSqlServer("server=.;database=watch;trusted_connection=true;");
+            optionsBuilder.UseSqlServer("server=.;database=watch;trusted_connection=true;");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder builder)

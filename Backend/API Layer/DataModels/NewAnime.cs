@@ -20,7 +20,7 @@ namespace API_Layer.DataModels
         public string MalPage { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         [Required(ErrorMessage = "Please Enter Episodes Count  ")]
         public int EpisodesNumber { get; set; }
         [Required]

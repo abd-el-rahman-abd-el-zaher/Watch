@@ -13,6 +13,7 @@ namespace DatabaseLayer.Configrations
             builder.Property(e => e.Status).HasConversion(
                                         v => v.ToString(),
                                         v => (Filler)Enum.Parse(typeof(Filler), v));
+            builder.Property(e => e.ReleaseDate).HasDefaultValue(DateTime.Now);
         }
     }
 }
