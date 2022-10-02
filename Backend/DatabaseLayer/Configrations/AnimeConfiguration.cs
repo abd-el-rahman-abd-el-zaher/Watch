@@ -1,4 +1,5 @@
-﻿using DatabaseLayer.Models;
+﻿using DatabaseLayer.Helper;
+using DatabaseLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -15,9 +16,12 @@ namespace DatabaseLayer.Configrations
         {
             builder.HasOne(anime => anime.User).WithMany(user => user.Animes);
             builder.HasOne(anime => anime.Category).WithMany(category => category.Animes);
-            builder.Property(a=>a.OutDay).HasConversion(
+            builder.Property(a => a.OutDay).HasConversion(
                                          v => v.ToString(),
                                          v => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), v));
+            builder.Property(a => a.ReleaseDate).HasColumnType("date");
+               
+            
 
         }
     }
