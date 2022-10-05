@@ -23,7 +23,8 @@ namespace API_Layer.Repositories
            {
                AnimeId = newEpisode.AnimeId,
                Title = newEpisode.Title,
-               Status = newEpisode.Status
+               Status = newEpisode.Status,
+               ReleaseDate = DateTime.Now               
                
            };
             context.AddAsync(episode);
