@@ -6,6 +6,7 @@ namespace API_Layer.DataModels
     public class NewEpisodeUrl
     {
         [Required(ErrorMessage = "Please Enterthe The episode URl ")]
+        [RegularExpression(@"[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)", ErrorMessage = "Please Enter a valid url  ")]
         public string Url { get; set; }
         [Required(ErrorMessage = "Please Enterthe The Host Name ")]
         public string HostName { get; set; }
