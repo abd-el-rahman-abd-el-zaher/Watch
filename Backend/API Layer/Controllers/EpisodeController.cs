@@ -36,22 +36,22 @@ namespace API_Layer.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] NewEpisode newEpisode)
         {
-            if (ModelState.IsValid)
-            {
-                try
+                if (ModelState.IsValid)
                 {
-                    await episodeReposatory.Add(newEpisode);
-                    return Created("url", newEpisode);
+                    try
+                    {
+                        await episodeReposatory.Add(newEpisode);
+                        return Created("url", newEpisode);
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    return BadRequest(ex.Message);
+                    return BadRequest(ModelState);
                 }
             }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
     }
 }

@@ -17,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
 builder.Services.AddScoped<IEpisodeReposatory, EpisodeRepository>();
+builder.Services.AddScoped<IUrlRepository, UrlRepository>();
+builder.Services.AddScoped<IFavAnimeRepository, FavAnimeRepository>();
 
 builder.Services.AddCors(options =>
 {

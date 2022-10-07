@@ -40,11 +40,13 @@ namespace API_Layer.Repositories
                     OutDay = newAnime.OutDay,
                     TeaserLink = newAnime.TeaserLink,
                     ReleaseDate = newAnime.ReleaseDate,
+                   // ReleaseDate= new DateTime(newAnime.ReleaseDate.Year,newAnime.ReleaseDate.Month,newAnime.ReleaseDate.Day),
                     MalPage = newAnime.MalPage,
                     EpisodesNumber = newAnime.EpisodesNumber,
                     CategoryId = newAnime.CategoryId,
                     UserId = newAnime.UserId
                 };
+
                 await context.AddAsync(anime);
                 await context.SaveChangesAsync();
 
