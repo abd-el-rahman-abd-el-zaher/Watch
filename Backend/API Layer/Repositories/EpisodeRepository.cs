@@ -27,8 +27,8 @@ namespace API_Layer.Repositories
                ReleaseDate = DateTime.Now               
                
            };
-            context.AddAsync(episode);
-            context.SaveChanges();
+           await context.AddAsync(episode);
+            await context.SaveChangesAsync();
         }
 
         public async Task<Episode> Get(int id)
